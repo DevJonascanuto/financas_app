@@ -1,0 +1,205 @@
+/* ---------- ESTILO GERAL ---------- */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 30px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ---------- SALDO ---------- */
+.saldo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.saldo-positivo {
+    color: #4CAF50;
+}
+
+.saldo-negativo {
+    color: #f44336;
+}
+
+/* ---------- FLASH MESSAGES ---------- */
+.flash-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* ---------- TABELAS ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #667eea;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* ---------- BOTOES ---------- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-receita {
+    background-color: #4CAF50;
+}
+
+.btn-receita:hover {
+    background-color: #45a049;
+}
+
+.btn-despesa {
+    background-color: #f44336;
+}
+
+.btn-despesa:hover {
+    background-color: #da190b;
+}
+
+.btn-logout {
+    background-color: #555;
+}
+
+.btn-logout:hover {
+    background-color: #333;
+}
+
+.btn-edit {
+    background-color: #2196F3;
+}
+
+.btn-edit:hover {
+    background-color: #0b7dda;
+}
+
+.btn-delete {
+    background-color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #da190b;
+}
+
+/* ---------- FORMULÁRIOS ---------- */
+form p {
+    margin: 15px 0;
+}
+
+input[type=text], input[type=password], input[type=number] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type=submit] {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
+}
+
+/* ---------- LOGIN / CADASTRO ---------- */
+.auth-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+}
+
+.auth-container h1 {
+    text-align: center;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.auth-container input[type=text],
+.auth-container input[type=password] {
+    margin-bottom: 15px;
+}
+
+.auth-container input[type=submit] {
+    width: 100%;
+}
+
+.auth-container a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #667eea;
+}
+
+.auth-container a:hover {
+    color: #764ba2;
+}
+
+/* ---------- TÍTULOS SEÇÕES ---------- */
+h2 {
+    margin-top: 40px;
+    color: #333;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 5px;
+}

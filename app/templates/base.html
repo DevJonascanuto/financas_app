@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Finanças App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

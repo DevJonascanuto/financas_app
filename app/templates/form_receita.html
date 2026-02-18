@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Adicionar Receita</title>
-</head>
-<body>
-    <h1>{{ 'Adicionar Receita' if form.__class__.__name__ == 'ReceitaForm' else 'Adicionar Despesa' }}</h1>
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-container">
+    <h1>{{ title }}</h1>
     <form method="POST">
         {{ form.hidden_tag() }}
         <p>{{ form.descricao.label }}<br>{{ form.descricao() }}</p>
         <p>{{ form.valor.label }}<br>{{ form.valor() }}</p>
+        <p>{{ form.data.label }}<br>{{ form.data() }}</p>
         <p>{{ form.submit() }}</p>
     </form>
-    <p><a href="{{ url_for('main.dashboard') }}">Voltar ao Dashboard</a></p>
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li style="color:green">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
-</body>
-</html>
+    <a href="{{ url_for('main.dashboard') }}">Voltar ao Dashboard</a>
+</div>
+{% endblock %}
