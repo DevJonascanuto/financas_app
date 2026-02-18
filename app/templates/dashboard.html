@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Bem-vindo, {{ current_user.email }}!</h1>
+    <p>Saldo atual: R$ {{ saldo }}</p>
+
+    <h2>Receitas</h2>
+    <ul>
+        {% for r in receitas %}
+        <li>{{ r.descricao }} - R$ {{ r.valor }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.adicionar_receita') }}">Adicionar Receita</a>
+
+    <h2>Despesas</h2>
+    <ul>
+        {% for d in despesas %}
+        <li>{{ d.descricao }} - R$ {{ d.valor }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('main.adicionar_despesa') }}">Adicionar Despesa</a>
+
+    <p><a href="{{ url_for('auth.logout') }}">Sair</a></p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color:green">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

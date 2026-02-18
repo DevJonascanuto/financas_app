@@ -2,32 +2,26 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Adicionar Receita</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <h1>{{ 'Adicionar Receita' if form.__class__.__name__ == 'ReceitaForm' else 'Adicionar Despesa' }}</h1>
     <form method="POST">
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
+        <p>{{ form.descricao.label }}<br>{{ form.descricao() }}</p>
+        <p>{{ form.valor.label }}<br>{{ form.valor() }}</p>
         <p>{{ form.submit() }}</p>
     </form>
-    <p>Não tem conta? <a href="{{ url_for('auth.register') }}">Cadastre-se</a></p>
+    <p><a href="{{ url_for('main.dashboard') }}">Voltar ao Dashboard</a></p>
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
                 {% for message in messages %}
-                    <li style="color:red">{{ message }}</li>
+                    <li style="color:green">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
     {% endwith %}
 </body>
 </html>
-
