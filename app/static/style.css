@@ -89,7 +89,7 @@ tr:hover {
 }
 
 .btn-receita {
-    background-color: #4CAF50;
+    background-color: #469761;
 }
 
 .btn-receita:hover {
@@ -105,11 +105,11 @@ tr:hover {
 }
 
 .btn-logout {
-    background-color: #555;
+    background-color: #db0707;
 }
 
 .btn-logout:hover {
-    background-color: #333;
+    background-color: #d30c0c;
 }
 
 .btn-edit {

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Finanças App</title>
+    <title>{% block title %}Finanças{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        {% for message in messages %}
-            <div class="flash-message">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-{% endwith %}
-
-{% block content %}
-{% endblock %}
-
+    <nav>
+        {% if current_user.is_authenticated %}
+            <span>Olá, {{ current_user.email }}</span>
+            <a href="{{ url_for('auth.logout') }}">Sair</a>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, msg in messages %}
+                    <div class="alert {{ category }}">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

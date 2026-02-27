@@ -1,89 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard - Finanças App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Controle de gastos</h2>
+<p>Saldo atual: R$ {{ "%.2f"|format(saldo) }}</p>
 
-<header>Finanças App - Dashboard</header>
+<h3>Receitas <a href="{{ url_for('main.adicionar_receita') }}">Adicionar</a></h3>
+<table>
+    <tr><th>Descrição</th><th>Valor</th><th>Data</th><th>Ações</th></tr>
+    {% for r in receitas %}
+    <tr>
+        <td>{{ r.descricao }}</td>
+        <td>{{ "%.2f"|format(r.valor) }}</td>
+        <td>{{ r.data.strftime('%d/%m/%Y') }}</td>
+        <td>
+            <a href="{{ url_for('main.editar_receita', id=r.id) }}">Editar</a>
+            <a href="{{ url_for('main.deletar_receita', id=r.id) }}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
-<div class="container">
-
-    <div class="saldo">
-        Saldo Atual: 
-        <span class="{{ 'saldo-positivo' if saldo >= 0 else 'saldo-negativo' }}">
-            R$ {{ "%.2f"|format(saldo) }}
-        </span>
-    </div>
-
-    <!-- FLASH MESSAGES -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="flash-message">{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-
-    <!-- RECEITAS -->
-    <h2>Receitas</h2>
-    <a class="btn btn-receita" href="{{ url_for('main.adicionar_receita') }}">Adicionar Receita</a>
-    <table>
-        <tr>
-            <th>Descrição</th>
-            <th>Valor (R$)</th>
-            <th>Data</th>
-            <th>Ações</th>
-        </tr>
-        {% for r in receitas %}
-        <tr>
-            <td>{{ r.descricao }}</td>
-            <td>{{ "%.2f"|format(r.valor) }}</td>
-            <td>{{ r.data.strftime('%d/%m/%Y') }}</td>
-            <td>
-                <a class="btn btn-edit" href="{{ url_for('main.editar_receita', id=r.id) }}">Editar</a>
-                <a class="btn btn-delete" href="{{ url_for('main.deletar_receita', id=r.id) }}">Deletar</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4">Nenhuma receita cadastrada.</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <!-- DESPESAS -->
-    <h2>Despesas</h2>
-    <a class="btn btn-despesa" href="{{ url_for('main.adicionar_despesa') }}">Adicionar Despesa</a>
-    <table>
-        <tr>
-            <th>Descrição</th>
-            <th>Valor (R$)</th>
-            <th>Data</th>
-            <th>Ações</th>
-        </tr>
-        {% for d in despesas %}
-        <tr>
-            <td>{{ d.descricao }}</td>
-            <td>{{ "%.2f"|format(d.valor) }}</td>
-            <td>{{ d.data.strftime('%d/%m/%Y') }}</td>
-            <td>
-                <a class="btn btn-edit" href="{{ url_for('main.editar_despesa', id=d.id) }}">Editar</a>
-                <a class="btn btn-delete" href="{{ url_for('main.deletar_despesa', id=d.id) }}">Deletar</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4">Nenhuma despesa cadastrada.</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <a class="btn btn-logout" href="{{ url_for('auth.logout') }}">Sair</a>
-
-</div>
-
-</body>
-</html>
+<h3>Despesas <a href="{{ url_for('main.adicionar_despesa') }}">Adicionar</a></h3>
+<table>
+    <tr><th>Descrição</th><th>Valor</th><th>Data</th><th>Ações</th></tr>
+    {% for d in despesas %}
+    <tr>
+        <td>{{ d.descricao }}</td>
+        <td>{{ "%.2f"|format(d.valor) }}</td>
+        <td>{{ d.data.strftime('%d/%m/%Y') }}</td>
+        <td>
+            <a href="{{ url_for('main.editar_despesa', id=d.id) }}">Editar</a>
+            <a href="{{ url_for('main.deletar_despesa', id=d.id) }}">Deletar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
