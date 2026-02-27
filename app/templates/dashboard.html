@@ -13,8 +13,8 @@
         <td>{{ "%.2f"|format(r.valor) }}</td>
         <td>{{ r.data.strftime('%d/%m/%Y') }}</td>
         <td>
-            <a href="{{ url_for('main.editar_receita', id=r.id) }}">Editar</a>
-            <a href="{{ url_for('main.deletar_receita', id=r.id) }}">Deletar</a>
+            <a href="{{ url_for('main.editar_receita', id=r.id) }} " class="btn btn-edit">Editar</a>
+            <a href="{{ url_for('main.deletar_receita', id=r.id) }}" class="btn btn-delete">Deletar</a>
         </td>
     </tr>
     {% endfor %}
@@ -29,8 +29,8 @@
         <td>{{ "%.2f"|format(d.valor) }}</td>
         <td>{{ d.data.strftime('%d/%m/%Y') }}</td>
         <td>
-            <a href="{{ url_for('main.editar_despesa', id=d.id) }}">Editar</a>
-            <a href="{{ url_for('main.deletar_despesa', id=d.id) }}">Deletar</a>
+            <a href="{{ url_for('main.editar_despesa', id=d.id) }}" class="btn btn-edit">Editar</a>
+            <a href="{{ url_for('main.deletar_despesa', id=d.id) }}" class= "btn btn-delete">Deletar</a>
         </td>
     </tr>
     {% endfor %}

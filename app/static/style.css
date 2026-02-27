@@ -89,11 +89,12 @@ tr:hover {
 }
 
 .btn-receita {
-    background-color: #469761;
+    background-color: #f12207;
 }
 
 .btn-receita:hover {
-    background-color: #45a049;
+    background-color: #f12207;
+   
 }
 
 .btn-despesa {
@@ -101,7 +102,8 @@ tr:hover {
 }
 
 .btn-despesa:hover {
-    background-color: #da190b;
+    background-color: #f44336;
+    
 }
 
 .btn-logout {
@@ -125,7 +127,7 @@ tr:hover {
 }
 
 .btn-delete:hover {
-    background-color: #da190b;
+    background-color: #f53426;
 }
 
 /* ---------- FORMULÁRIOS ---------- */
