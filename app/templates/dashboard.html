@@ -2,7 +2,7 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
 <h2>Controle de gastos</h2>
-<p>Saldo atual: R$ {{ "%.2f"|format(saldo) }}</p>
+<p class="saldo">Saldo atual: R$ {{ "%.2f"|format(saldo) }} </p>
 
 <h3>Receitas <a href="{{ url_for('main.adicionar_receita') }}">Adicionar</a></h3>
 <table>
