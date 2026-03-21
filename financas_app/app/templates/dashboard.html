@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Controle de gastos</h1>
+        <p class="page-subtitle">Visão geral das suas finanças</p>
+    </div>
+    <div class="saldo-card {% if saldo >= 0 %}saldo-positivo{% else %}saldo-negativo{% endif %}">
+        <span class="saldo-label">Saldo atual</span>
+        <span class="saldo-valor">R$ {{ "%.2f"|format(saldo) }}</span>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="section-dot dot-receita"></span>
+            Receitas
+        </h2>
+        <a href="{{ url_for('main.adicionar_receita') }}" class="btn-add">+ Adicionar</a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in receitas %}
+                <tr>
+                    <td class="td-descricao">{{ r.descricao }}</td>
+                    <td class="td-valor receita-valor">R$ {{ "%.2f"|format(r.valor) }}</td>
+                    <td class="td-data">{{ r.data.strftime('%d/%m/%Y') }}</td>
+                    <td class="td-acoes">
+                        <a href="{{ url_for('main.editar_receita', id=r.id) }}" class="btn-table btn-edit">Editar</a>
+                        <a href="{{ url_for('main.deletar_receita', id=r.id) }}" class="btn-table btn-delete">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if not receitas %}
+                <tr><td colspan="4" class="td-empty">Nenhuma receita cadastrada</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <span class="section-dot dot-despesa"></span>
+            Despesas
+        </h2>
+        <a href="{{ url_for('main.adicionar_despesa') }}" class="btn-add">+ Adicionar</a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in despesas %}
+                <tr>
+                    <td class="td-descricao">{{ d.descricao }}</td>
+                    <td class="td-valor despesa-valor">R$ {{ "%.2f"|format(d.valor) }}</td>
+                    <td class="td-data">{{ d.data.strftime('%d/%m/%Y') }}</td>
+                    <td class="td-acoes">
+                        <a href="{{ url_for('main.editar_despesa', id=d.id) }}" class="btn-table btn-edit">Editar</a>
+                        <a href="{{ url_for('main.deletar_despesa', id=d.id) }}" class="btn-table btn-delete">Deletar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if not despesas %}
+                <tr><td colspan="4" class="td-empty">Nenhuma despesa cadastrada</td></tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

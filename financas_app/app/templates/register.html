@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Registrar{% endblock %}
+{% block content %}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <div class="auth-header">
+            <span class="brand-icon-lg">◈</span>
+            <h2>Criar conta</h2>
+            <p>Comece a controlar suas finanças hoje</p>
+        </div>
+        <form method="POST" class="form-body">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-input", placeholder="seu@email.com") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-input", placeholder="••••••••") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-label") }}
+                {{ form.confirm_password(class="form-input", placeholder="••••••••") }}
+            </div>
+            {{ form.submit(class="btn-submit btn-submit-auth") }}
+        </form>
+        <p class="auth-link">Já tem conta? <a href="{{ url_for('auth.login') }}">Entrar</a></p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Nova Receita{% endblock %}
+{% block content %}
+
+<div class="form-page">
+    <div class="form-card">
+        <div class="form-card-header receita-header">
+            <span class="form-icon">↑</span>
+            <h2>Receita</h2>
+        </div>
+        <form method="POST" class="form-body">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.descricao.label(class="form-label") }}
+                {{ form.descricao(class="form-input", placeholder="Ex: Salário") }}
+            </div>
+            <div class="form-group">
+                {{ form.valor.label(class="form-label") }}
+                {{ form.valor(class="form-input", placeholder="0.00") }}
+            </div>
+            <div class="form-group">
+                {{ form.data.label(class="form-label") }}
+                {{ form.data(class="form-input") }}
+            </div>
+            {{ form.submit(class="btn-submit btn-submit-receita") }}
+        </form>
+        <a href="{{ url_for('main.dashboard') }}" class="form-back">← Voltar ao dashboard</a>
+    </div>
+</div>
+
+{% endblock %}
